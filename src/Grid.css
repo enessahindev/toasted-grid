@@ -1,0 +1,217 @@
+.custom-grid {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .custom-grid table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  
+  /* Themes */
+  .custom-grid.theme-light {
+    background-color: #ffffff;
+    color: #333333;
+  }
+  
+  .custom-grid.theme-dark {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+  }
+  
+  .custom-grid.theme-dark input {
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+    border-color: #444444;
+  }
+  
+  .custom-grid.theme-dark th {
+    background-color: #333333;
+  }
+  
+  .custom-grid.theme-dark .pagination-button,
+  .custom-grid.theme-dark .pagination-number {
+    background-color: #333333;
+    color: #f0f0f0;
+    border-color: #444444;
+  }
+  
+  .custom-grid.theme-dark .pagination-number.active {
+    background-color: #505050;
+  }
+  
+  /* Header styling */
+  .custom-grid th {
+    background-color: #f5f5f5;
+    padding: 12px 8px;
+    text-align: left;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .custom-grid.theme-dark th {
+    background-color: #333333;
+  }
+  
+  .custom-grid th .th-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  
+  .custom-grid th .sort-indicator {
+    margin-left: 4px;
+    opacity: 0.5;
+  }
+  
+  .custom-grid th .th-filter input {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  
+  /* Row styling */
+  .custom-grid tr {
+    border-bottom: 1px solid #eee;
+  }
+  
+  .custom-grid.theme-dark tr {
+    border-bottom: 1px solid #444444;
+  }
+  
+  .custom-grid td {
+    padding: 10px 8px;
+  }
+  
+  /* Bordered style */
+  .custom-grid.bordered table {
+    border: 1px solid #eee;
+  }
+  
+  .custom-grid.bordered.theme-dark table {
+    border: 1px solid #444444;
+  }
+  
+  .custom-grid.bordered th,
+  .custom-grid.bordered td {
+    border: 1px solid #eee;
+  }
+  
+  .custom-grid.bordered.theme-dark th,
+  .custom-grid.bordered.theme-dark td {
+    border: 1px solid #444444;
+  }
+  
+  /* Striped style */
+  .custom-grid.striped tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .custom-grid.striped.theme-dark tbody tr:nth-child(even) {
+    background-color: #2a2a2a;
+  }
+  
+  /* Compact style */
+  .custom-grid.compact th,
+  .custom-grid.compact td {
+    padding: 6px 4px;
+    font-size: 0.9em;
+  }
+  
+  /* Clickable rows */
+  .custom-grid tr.clickable {
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .custom-grid tr.clickable:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .custom-grid.theme-dark tr.clickable:hover {
+    background-color: #2d2d2d;
+  }
+  
+  /* Messages */
+  .custom-grid .loading-message,
+  .custom-grid .empty-message {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+  }
+  
+  /* Pagination */
+  .custom-grid .grid-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+  }
+  
+  .custom-grid.theme-dark .grid-pagination {
+    background-color: #2a2a2a;
+    border-top: 1px solid #444444;
+  }
+  
+  .custom-grid .pagination-button {
+    padding: 6px 12px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .custom-grid .pagination-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .custom-grid .page-numbers {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .custom-grid .pagination-number {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .custom-grid .pagination-number.active {
+    background-color: #e6e6e6;
+    font-weight: bold;
+  }
+  
+  .custom-grid .pagination-info {
+    font-size: 0.9em;
+    color: #888;
+  }
+  
+  /* Column width utility */
+  .custom-grid .width-small {
+    width: 80px;
+  }
+  
+  .custom-grid .width-medium {
+    width: 150px;
+  }
+  
+  .custom-grid .width-large {
+    width: 250px;
+  }

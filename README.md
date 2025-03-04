@@ -1,3 +1,5 @@
+[Live Demo](https://toastedui-react-grid.vercel.app/)
+
 # Customizable React Grid
 
 A highly customizable React grid component with built-in sorting, filtering, and pagination capabilities.
@@ -24,6 +26,9 @@ yarn add toastedui-react-grid
 ```
 
 ## Basic Usage
+
+
+## Create a types folder in src and create a toastedui-react-grid.d.ts file and declare module 'toastedui-react-grid'
 
 ```jsx
 import React from 'react';

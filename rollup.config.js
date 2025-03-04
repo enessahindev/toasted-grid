@@ -1,76 +1,36 @@
-import babel from '@rollup/plugin-babel';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import typescript from 'rollup-plugin-typescript2';
-import { terser } from 'rollup-plugin-terser';
-import external from 'rollup-plugin-peer-deps-external';
-import postcss from 'rollup-plugin-postcss';
-import copy from 'rollup-plugin-copy';
-import { readFileSync } from 'fs';
-
-// Read package.json as a JSON file
-const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'));
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import babel from "@rollup/plugin-babel";
+import terser from "@rollup/plugin-terser";
+import typescript from "rollup-plugin-typescript2";
+import postcss from "rollup-plugin-postcss";
 
 export default {
-  input: 'src/index.js',
+  input: "src/index.js",
   output: [
     {
-      file: pkg.main,
-      format: 'cjs',
-      exports: 'named',
+      file: "dist/index.esm.js",
+      format: "esm",
       sourcemap: true,
+      exports: "named" // 🚀 Named export hatasını önler
     },
     {
-      file: pkg.module,
-      format: 'es',
-      exports: 'named',
+      file: "dist/index.cjs",
+      format: "cjs",
       sourcemap: true,
-    },
+      exports: "named" // 🚀 Named export hatasını önler
+    }
   ],
+  external: ["react", "react-dom"],
   plugins: [
-    external(),
-    // Process JSX before anything else
-    babel({
-      babelHelpers: 'bundled',
-      exclude: 'node_modules/**',
-      presets: [
-        '@babel/preset-env',
-        ['@babel/preset-react', { runtime: 'automatic' }]
-      ],
-      extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      include: ['src/**/*'],
-    }),
-    resolve({
-      extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    }),
+    resolve({ extensions: [".js", ".jsx", ".ts", ".tsx"] }),
     commonjs(),
-    typescript({
-      tsconfig: './tsconfig.json',
-      tsconfigOverride: {
-        compilerOptions: {
-          declaration: true,
-          declarationDir: 'dist',
-          jsx: 'react-jsx',
-        },
-      },
-      useTsconfigDeclarationDir: true,
+    postcss(),
+    babel({
+      babelHelpers: "bundled",
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
+      exclude: "node_modules/**"
     }),
-    postcss({
-      extensions: ['.css'],
-      minimize: true,
-      inject: {
-        insertAt: 'top',
-      },
-      extract: 'styles.css',
-    }),
-    terser(),
-    copy({
-      targets: [
-        { src: 'src/types.d.ts', dest: 'dist' },
-        { src: 'README.md', dest: 'dist' },
-        { src: 'LICENSE', dest: 'dist' },
-      ],
-    }),
-  ],
-  external: Object.keys(pkg.peerDependencies || {}),
+    terser()
+  ]
 };
